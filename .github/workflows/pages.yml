@@ -6,16 +6,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,39 +28,39 @@ jobs:
           GITHUB_PAGES: "1"
           VITE_PUBLIC_HOSTNAME: miracleomokaro.github.io
         run: npm run build && node scripts/pages-finalize.mjs
-      - name: Prepare Pages artifact
+      - name: Publish gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -eu
           if [ -d .output/public ]; then
             OUT=.output/public
           elif [ -d dist ]; then
             OUT=dist
-          elif [ -d .vercel/output/static ]; then
-            OUT=.vercel/output/static
           else
             echo "No static output directory found" >&2
             ls -la
             exit 1
           fi
-          mkdir -p _site
-          cp -a "$OUT"/. _site/
-          if [ ! -f _site/index.html ]; then
+          if [ ! -f "$OUT/index.html" ]; then
             echo "index.html missing from $OUT" >&2
-            find _site | head -80
+            find "$OUT" | head -80
             exit 1
           fi
-          echo "Prepared $OUT -> _site"
-          find _site -maxdepth 2 -type f | head
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          work=/tmp/gh-pages
+          rm -rf "$work"
+          git clone --depth 1 --branch gh-pages \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            "$work"
+          find "$work" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -a "$OUT"/. "$work/"
+          cd "$work"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No Pages changes"
+            exit 0
+          fi
+          git commit -m "Deploy GitHub Pages"
+          git push origin gh-pages
