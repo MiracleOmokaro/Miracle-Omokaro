@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Miracle Omokaro",
+      "hasCanvas": false,
+      "bodyTextLen": 1167,
+      "bodyTextHash": "44e17f1322936691d3d6759396a65bd60cf44188baa09f43f8a1ff730d38225d",
+      "bodyTextPrefix": "Miracle Omokaro Home About Path Work Research Skills Connect Pol",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Miracle Omokaro",
+      "hasCanvas": false,
+      "bodyTextLen": 1112,
+      "bodyTextHash": "84053de6ebe8d0f3395eb7094d77b41a6f52f93fad8afbd04b889b74bcf960df",
+      "bodyTextPrefix": "Miracle Omokaro CYBERSECURITY PRACTITIONER Miracle Omokaro Sopho",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
