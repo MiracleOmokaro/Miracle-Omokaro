@@ -6,6 +6,7 @@ import { Link } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Miracle Omokaro";
+const BASE_URL = import.meta.env.BASE_URL;
 
 function NotFound() {
   return (
@@ -35,10 +36,10 @@ export const Route = createRootRoute({
       },
     ],
     links: [
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/svg+xml", href: `${BASE_URL}favicon.svg` },
       { rel: "stylesheet", href: appCss },
-      { rel: "manifest", href: "/__grok/manifest.webmanifest" },
-      { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
+      { rel: "manifest", href: `${BASE_URL}__grok/manifest.webmanifest` },
+      { rel: "apple-touch-icon", href: `${BASE_URL}__grok/icon-180.png` },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

@@ -3,3 +3,9 @@ node_modules/
 .github_repo
 .env
 .env.*
+.output/
+_site/
+dist/
+.nitro/
+.tanstack/
+*.log
