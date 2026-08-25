@@ -1,0 +1,1 @@
+import{h as e,t}from"./site-shell-BLOppA6o.js";import{t as n}from"./path-of-progress-BiViU5qw.js";var r=e();function i(){return(0,r.jsx)(t,{children:(0,r.jsx)(`div`,{className:`px-4 py-20 sm:px-6 sm:py-28`,children:(0,r.jsx)(n,{})})})}export{i as component};

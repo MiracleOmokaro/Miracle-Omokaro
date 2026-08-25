@@ -1,0 +1,1 @@
+import{h as e,n as t}from"./site-shell-BLOppA6o.js";var n=e(),r={ember:`news-art-ember`,violet:`news-art-violet`,forest:`news-art-forest`,ink:`news-art-ink`,tide:`news-art-tide`,sand:`news-art-sand`,noir:`news-art-noir`};function i({art:e,className:i,children:a}){return(0,n.jsx)(`div`,{className:t(`news-art relative overflow-hidden`,r[e],i),children:a})}export{i as t};
