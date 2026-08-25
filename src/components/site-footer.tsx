@@ -1,34 +1,63 @@
 import { Link } from "@tanstack/react-router";
 import { PERSON } from "@/data/site";
 
+const COLS = [
+  {
+    title: "Path",
+    links: [
+      { to: "/path", label: "Path of Progress" },
+      { to: "/news", label: "News" },
+      { to: "/skills", label: "Skills" },
+      { to: "/research", label: "Research" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { to: "/polymorph", label: "Polymorph" },
+      { to: "/polymorph/process", label: "Process" },
+      { to: "/polymorph/work", label: "Work" },
+      { to: "/about", label: "About" },
+    ],
+  },
+] as const;
+
 export function SiteFooter({ variant }: { variant: "personal" | "polymorph" }) {
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <p className="font-display text-lg text-fg">
+    <footer className="mt-8 border-t border-border">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
+        <div className="lg:col-span-2">
+          <p className="text-sm font-medium tracking-tight text-fg">
             {variant === "polymorph" ? "Polymorph Technologies" : PERSON.name}
           </p>
-          <p className="mt-1 max-w-sm text-sm text-muted">
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
             {variant === "polymorph"
-              ? "Agentic software development for businesses that need a real site, not a template."
-              : "Cybersecurity practitioner. Sophomore. Builder of Polymorph Technologies and Pentagon Cyber."}
+              ? "Agentic software development. Websites researched, structured, and printed at low latency."
+              : "Cybersecurity practitioner. A proven path, written in public."}
           </p>
         </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
-          <Link to="/" className="hover:text-fg">
-            Practitioner
-          </Link>
-          <Link to="/polymorph" className="hover:text-fg">
-            Polymorph
-          </Link>
-          <Link to="/path" className="hover:text-fg">
-            Path of Progress
-          </Link>
-          <Link to="/connect" className="hover:text-fg">
-            Connect
-          </Link>
-        </div>
+        {COLS.map((col) => (
+          <div key={col.title}>
+            <p className="text-xs uppercase tracking-[0.16em] text-subtle">{col.title}</p>
+            <ul className="mt-4 space-y-2">
+              {col.links.map((l) => (
+                <li key={l.to}>
+                  <Link to={l.to} className="text-sm text-muted hover:text-fg">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 pb-10 text-xs text-subtle sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <p>
+          © {new Date().getFullYear()} {PERSON.name}. Sister company: Pentagon Cyber.
+        </p>
+        <Link to="/connect" className="hover:text-fg">
+          Connect
+        </Link>
       </div>
     </footer>
   );

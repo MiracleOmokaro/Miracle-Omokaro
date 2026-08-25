@@ -18,9 +18,11 @@ const LINKS = [
 function ConnectPage() {
   return (
     <SiteShell>
-      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
-        <p className="text-xs uppercase tracking-[0.2em] text-accent">Connect</p>
-        <h1 className="mt-3 font-display text-4xl text-fg sm:text-6xl">Team hacking welcome.</h1>
+      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+        <p className="text-sm text-muted">Connect</p>
+        <h1 className="mt-3 text-4xl font-medium tracking-tight text-fg sm:text-6xl">
+          Team hacking welcome.
+        </h1>
         <p className="mt-5 text-lg leading-relaxed text-muted">
           I am on X, Discord, TryHackMe, and GitHub. If you are learning the same path, hunting
           with permission, or building for SMEs in the Gulf, write.
@@ -32,7 +34,7 @@ function ConnectPage() {
                 href={l.href}
                 target={l.href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
-                className="flex min-h-16 items-center justify-between gap-4 py-4 hover:text-accent"
+                className="flex min-h-16 items-center justify-between gap-4 py-4"
               >
                 <span className="text-fg">{l.label}</span>
                 <span className="text-sm text-muted">{l.note}</span>

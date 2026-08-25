@@ -26,10 +26,12 @@ function ContactPage() {
 
   return (
     <SiteShell variant="polymorph">
-      <div className="mx-auto max-w-xl px-4 py-16 sm:px-6 sm:py-20">
-        <p className="text-xs uppercase tracking-[0.2em] text-accent">Contact</p>
-        <h1 className="mt-3 font-display text-4xl text-fg sm:text-5xl">Start a project.</h1>
-        <p className="mt-4 text-muted leading-relaxed">
+      <div className="mx-auto max-w-xl px-4 py-16 sm:px-6 sm:py-24">
+        <p className="text-sm text-muted">Contact</p>
+        <h1 className="mt-3 text-4xl font-medium tracking-tight text-fg sm:text-5xl">
+          Start a project.
+        </h1>
+        <p className="mt-4 leading-relaxed text-muted">
           Tell us the business, the market, and what the site must do. A person reads this. A
           voice-agent discovery call is optional and disclosed.
         </p>
@@ -39,7 +41,7 @@ function ContactPage() {
             <input
               required
               name="name"
-              className="mt-2 h-11 w-full rounded-md border border-border bg-surface px-3 text-fg outline-none focus:ring-2 focus:ring-accent/50"
+              className="mt-2 h-11 w-full rounded-lg border border-border bg-surface px-3 text-fg outline-none focus:ring-2 focus:ring-fg/30"
             />
           </label>
           <label className="block">
@@ -48,7 +50,7 @@ function ContactPage() {
               required
               type="email"
               name="email"
-              className="mt-2 h-11 w-full rounded-md border border-border bg-surface px-3 text-fg outline-none focus:ring-2 focus:ring-accent/50"
+              className="mt-2 h-11 w-full rounded-lg border border-border bg-surface px-3 text-fg outline-none focus:ring-2 focus:ring-fg/30"
             />
           </label>
           <label className="block">
@@ -57,12 +59,14 @@ function ContactPage() {
               required
               name="body"
               rows={6}
-              className="mt-2 w-full rounded-md border border-border bg-surface px-3 py-2 text-fg outline-none focus:ring-2 focus:ring-accent/50"
+              className="mt-2 w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg outline-none focus:ring-2 focus:ring-fg/30"
             />
           </label>
           <Button type="submit">Send brief</Button>
           {sent ? (
-            <p className="text-sm text-muted">Your mail client should open with the brief addressed to us.</p>
+            <p className="text-sm text-muted">
+              Your mail client should open with the brief addressed to us.
+            </p>
           ) : null}
         </form>
       </div>

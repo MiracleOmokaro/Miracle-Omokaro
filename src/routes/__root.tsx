@@ -12,9 +12,9 @@ function NotFound() {
   return (
     <SiteShell>
       <div className="mx-auto max-w-xl px-4 py-24 text-center">
-        <p className="text-xs uppercase tracking-wide text-subtle">404</p>
-        <h1 className="mt-3 font-display text-4xl text-fg">This node is not on the path.</h1>
-        <Link to="/" className="mt-6 inline-block text-sm text-accent hover:underline">
+        <p className="text-sm text-muted">404</p>
+        <h1 className="mt-3 text-4xl font-medium tracking-tight text-fg">This node is not on the path.</h1>
+        <Link to="/" className="mt-6 inline-block text-sm text-fg underline-offset-4 hover:underline">
           Return home
         </Link>
       </div>
@@ -28,7 +28,7 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: APP_NAME },
-      { name: "theme-color", content: "#0a0a0b" },
+      { name: "theme-color", content: "#000000" },
       {
         name: "description",
         content:
@@ -44,7 +44,7 @@ export const Route = createRootRoute({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,400;0,500;0,600;1,400&display=swap",
       },
     ],
   }),

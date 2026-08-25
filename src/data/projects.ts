@@ -12,6 +12,7 @@ export const PROJECTS: Project[] = [
     completedDate: "2026-07-12",
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/polymorph-technologies/al-noor-retail",
+    newsArt: "sand",
     summary:
       "Bilingual e-commerce for a Riyadh retailer: catalogue, inventory, and payment flows that respect local checkout reality — including Mada — without a six-month agency timeline.",
     description:
@@ -38,6 +39,7 @@ export const PROJECTS: Project[] = [
     completedDate: "2026-06-03",
     liveUrl: "https://example.com",
     githubUrl: null,
+    newsArt: "tide",
     summary:
       "A quiet, high-trust site for a Dubai freight operator: lanes, documentation, and a request desk that sales can actually close from.",
     description:
@@ -63,6 +65,7 @@ export const PROJECTS: Project[] = [
     completedDate: "2026-04-21",
     liveUrl: "https://example.com",
     githubUrl: null,
+    newsArt: "forest",
     summary:
       "A clinic site that treats appointment flow and privacy as first-class, not a plugin afterthought.",
     description:
@@ -88,6 +91,7 @@ export const PROJECTS: Project[] = [
     completedDate: null,
     liveUrl: null,
     githubUrl: "https://github.com/polymorph-technologies/qamar-pay",
+    newsArt: "violet",
     summary:
       "A fintech marketing site in progress: product narrative, compliance-aware copy, and a waitlist that sales can work.",
     description:
@@ -109,6 +113,7 @@ export const PROJECTS: Project[] = [
     completedDate: null,
     liveUrl: null,
     githubUrl: "https://github.com/polymorph-technologies/agentic-press",
+    newsArt: "ink",
     summary:
       "The machinery itself: search, sort, and print. A low-latency pipeline that turns a business brief into a structured site, with human checkpoints.",
     description:

@@ -22,24 +22,13 @@ export type ContentBlock = {
   bullets?: string[];
 };
 
-export type RoadmapStage = {
-  id: string;
-  title: string;
-  platform: string;
-  order: number;
-  group: StageGroup;
-  status: StageStatus;
-  completedDate: string | null;
-  verificationUrl: string | null;
-  officialUrl: string | null;
-  icon: StageIcon;
-  hoverSummary: string;
-  courseOverview: string;
-  learned: ContentBlock[];
-  ideas: Idea[];
-  relatedStages: string[];
-  nextRecommended: string | null;
-};
+export type PlatformKey =
+  | "cisco"
+  | "tryhackme"
+  | "portswigger"
+  | "asu"
+  | "sans"
+  | "independent";
 
 export type StageIcon =
   | "shield-check"
@@ -50,6 +39,29 @@ export type StageIcon =
   | "research"
   | "target"
   | "fortress";
+
+export type RoadmapStage = {
+  id: string;
+  title: string;
+  platform: string;
+  platformKey: PlatformKey;
+  order: number;
+  group: StageGroup;
+  status: StageStatus;
+  startDate: string | null;
+  endDate: string | null;
+  completedDate: string | null;
+  verificationUrl: string | null;
+  officialUrl: string | null;
+  icon: StageIcon;
+  hoverSummary: string;
+  courseOverview: string;
+  learned: ContentBlock[];
+  ideas: Idea[];
+  relatedStages: string[];
+  nextRecommended: string | null;
+  newsArt: NewsArt;
+};
 
 export type ProjectStatus = "live" | "in-development" | "archived" | "concept";
 export type ProjectGroup = "Client Work" | "Internal Tools" | "Experiments" | "Case Studies";
@@ -71,6 +83,7 @@ export type Project = {
   clientFeedback: { quote: string; author: string; rating: number } | null;
   agenticNotes: string;
   relatedProjects: string[];
+  newsArt: NewsArt;
 };
 
 export type Severity = "critical" | "high" | "medium" | "low";
@@ -84,6 +97,7 @@ export type Win = {
   summary: string;
   writeup: ContentBlock[];
   techniques: string[];
+  newsArt: NewsArt;
 };
 
 export type ResearchPost = {
@@ -94,4 +108,27 @@ export type ResearchPost = {
   summary: string;
   body: ContentBlock[];
   status: "published" | "in-progress" | "planned";
+  newsArt: NewsArt;
+};
+
+export type NewsArt =
+  | "ember"
+  | "violet"
+  | "forest"
+  | "ink"
+  | "tide"
+  | "sand"
+  | "noir";
+
+export type NewsKind = "path" | "research" | "skills" | "company";
+
+export type NewsPost = {
+  id: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  kind: NewsKind;
+  href: string;
+  newsArt: NewsArt;
+  kicker?: string;
 };

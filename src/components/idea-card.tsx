@@ -8,20 +8,25 @@ export function IdeaCard({ idea }: { idea: Idea }) {
   const inner = (
     <>
       <div className="flex items-start justify-between gap-3">
-        <h3 className={cn("text-base text-fg", live && "underline-offset-4 group-hover:underline")}>
+        <h3
+          className={cn(
+            "text-base tracking-tight text-fg",
+            live && "underline-offset-4 group-hover:underline",
+          )}
+        >
           {idea.title}
         </h3>
-        {live ? <ArrowUpRight className="size-4 shrink-0 text-accent" /> : null}
+        {live ? <ArrowUpRight className="size-4 shrink-0 text-muted" /> : null}
       </div>
       <p className="mt-2 text-sm leading-relaxed text-muted">{idea.description}</p>
-      <div className="mt-3">
+      <div className="mt-4">
         <StatusPing status={idea.status} />
       </div>
     </>
   );
 
   const className =
-    "group block rounded-lg border border-border bg-surface p-5 transition-colors duration-150 hover:border-fg/20";
+    "group block border-b border-border py-6 first:pt-0 last:border-b-0 last:pb-0";
 
   if (live && idea.githubUrl) {
     return (

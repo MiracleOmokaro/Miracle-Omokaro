@@ -37,23 +37,22 @@ const STEPS = [
 function ProcessPage() {
   return (
     <SiteShell variant="polymorph">
-      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
-        <p className="text-xs uppercase tracking-[0.2em] text-accent">Process</p>
-        <h1 className="mt-3 font-display text-4xl text-fg sm:text-6xl">
+      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+        <p className="text-sm text-muted">Process</p>
+        <h1 className="mt-3 text-4xl font-medium tracking-tight text-fg sm:text-6xl">
           Search, sort, print. Then a human.
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-muted">
           Traditional agencies sell weeks of workshops. Polymorph sells a machine that already did
-          the research, plus the few hours of judgement that still require a person. Latency is the
-          product feature. Quality is the constraint, not the opposite of speed.
+          the research, plus the few hours of judgement that still require a person.
         </p>
-        <ol className="mt-14 space-y-10">
+        <ol className="mt-16 space-y-12">
           {STEPS.map((s, i) => (
             <li key={s.t} className="grid gap-3 sm:grid-cols-[4rem_1fr]">
-              <span className="font-mono text-sm text-accent">{String(i + 1).padStart(2, "0")}</span>
+              <span className="font-mono text-sm text-muted">{String(i + 1).padStart(2, "0")}</span>
               <div>
-                <h2 className="font-display text-2xl text-fg">{s.t}</h2>
-                <p className="mt-2 leading-relaxed text-muted">{s.d}</p>
+                <h2 className="text-2xl font-medium tracking-tight text-fg">{s.t}</h2>
+                <p className="mt-2 text-[17px] leading-[1.7] text-muted">{s.d}</p>
               </div>
             </li>
           ))}

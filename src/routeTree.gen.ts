@@ -13,13 +13,16 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as ResearchRouteImport } from './routes/research'
-import { Route as SkillsRouteImport } from './routes/skills'
+import { Route as NewsIndexRouteImport } from './routes/news/index'
+import { Route as NewsSlugRouteImport } from './routes/news/$slug'
 import { Route as PathIndexRouteImport } from './routes/path/index'
 import { Route as PathSlugRouteImport } from './routes/path/$slug'
 import { Route as PolymorphIndexRouteImport } from './routes/polymorph/index'
 import { Route as PolymorphAboutRouteImport } from './routes/polymorph/about'
 import { Route as PolymorphContactRouteImport } from './routes/polymorph/contact'
 import { Route as PolymorphProcessRouteImport } from './routes/polymorph/process'
+import { Route as SkillsIndexRouteImport } from './routes/skills/index'
+import { Route as SkillsSlugRouteImport } from './routes/skills/$slug'
 import { Route as WorkIndexRouteImport } from './routes/work/index'
 import { Route as WorkSlugRouteImport } from './routes/work/$slug'
 import { Route as PolymorphWorkIndexRouteImport } from './routes/polymorph/work/index'
@@ -45,9 +48,14 @@ const ResearchRoute = ResearchRouteImport.update({
   path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SkillsRoute = SkillsRouteImport.update({
-  id: '/skills',
-  path: '/skills',
+const NewsIndexRoute = NewsIndexRouteImport.update({
+  id: '/news/',
+  path: '/news/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/news/$slug',
+  path: '/news/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PathIndexRoute = PathIndexRouteImport.update({
@@ -80,6 +88,16 @@ const PolymorphProcessRoute = PolymorphProcessRouteImport.update({
   path: '/polymorph/process',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SkillsIndexRoute = SkillsIndexRouteImport.update({
+  id: '/skills/',
+  path: '/skills/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillsSlugRoute = SkillsSlugRouteImport.update({
+  id: '/skills/$slug',
+  path: '/skills/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkIndexRoute = WorkIndexRouteImport.update({
   id: '/work/',
   path: '/work/',
@@ -106,14 +124,17 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
   '/research': typeof ResearchRoute
-  '/skills': typeof SkillsRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/path/$slug': typeof PathSlugRoute
   '/polymorph/about': typeof PolymorphAboutRoute
   '/polymorph/contact': typeof PolymorphContactRoute
   '/polymorph/process': typeof PolymorphProcessRoute
+  '/skills/$slug': typeof SkillsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/news/': typeof NewsIndexRoute
   '/path/': typeof PathIndexRoute
   '/polymorph/': typeof PolymorphIndexRoute
+  '/skills/': typeof SkillsIndexRoute
   '/work/': typeof WorkIndexRoute
   '/polymorph/work/$slug': typeof PolymorphWorkSlugRoute
   '/polymorph/work/': typeof PolymorphWorkIndexRoute
@@ -123,14 +144,17 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
   '/research': typeof ResearchRoute
-  '/skills': typeof SkillsRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/path/$slug': typeof PathSlugRoute
   '/polymorph/about': typeof PolymorphAboutRoute
   '/polymorph/contact': typeof PolymorphContactRoute
   '/polymorph/process': typeof PolymorphProcessRoute
+  '/skills/$slug': typeof SkillsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/news': typeof NewsIndexRoute
   '/path': typeof PathIndexRoute
   '/polymorph': typeof PolymorphIndexRoute
+  '/skills': typeof SkillsIndexRoute
   '/work': typeof WorkIndexRoute
   '/polymorph/work/$slug': typeof PolymorphWorkSlugRoute
   '/polymorph/work': typeof PolymorphWorkIndexRoute
@@ -141,14 +165,17 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
   '/research': typeof ResearchRoute
-  '/skills': typeof SkillsRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/path/$slug': typeof PathSlugRoute
   '/polymorph/about': typeof PolymorphAboutRoute
   '/polymorph/contact': typeof PolymorphContactRoute
   '/polymorph/process': typeof PolymorphProcessRoute
+  '/skills/$slug': typeof SkillsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/news/': typeof NewsIndexRoute
   '/path/': typeof PathIndexRoute
   '/polymorph/': typeof PolymorphIndexRoute
+  '/skills/': typeof SkillsIndexRoute
   '/work/': typeof WorkIndexRoute
   '/polymorph/work/$slug': typeof PolymorphWorkSlugRoute
   '/polymorph/work/': typeof PolymorphWorkIndexRoute
@@ -160,14 +187,17 @@ export interface FileRouteTypes {
     | '/about'
     | '/connect'
     | '/research'
-    | '/skills'
+    | '/news/$slug'
     | '/path/$slug'
     | '/polymorph/about'
     | '/polymorph/contact'
     | '/polymorph/process'
+    | '/skills/$slug'
     | '/work/$slug'
+    | '/news/'
     | '/path/'
     | '/polymorph/'
+    | '/skills/'
     | '/work/'
     | '/polymorph/work/$slug'
     | '/polymorph/work/'
@@ -177,14 +207,17 @@ export interface FileRouteTypes {
     | '/about'
     | '/connect'
     | '/research'
-    | '/skills'
+    | '/news/$slug'
     | '/path/$slug'
     | '/polymorph/about'
     | '/polymorph/contact'
     | '/polymorph/process'
+    | '/skills/$slug'
     | '/work/$slug'
+    | '/news'
     | '/path'
     | '/polymorph'
+    | '/skills'
     | '/work'
     | '/polymorph/work/$slug'
     | '/polymorph/work'
@@ -194,14 +227,17 @@ export interface FileRouteTypes {
     | '/about'
     | '/connect'
     | '/research'
-    | '/skills'
+    | '/news/$slug'
     | '/path/$slug'
     | '/polymorph/about'
     | '/polymorph/contact'
     | '/polymorph/process'
+    | '/skills/$slug'
     | '/work/$slug'
+    | '/news/'
     | '/path/'
     | '/polymorph/'
+    | '/skills/'
     | '/work/'
     | '/polymorph/work/$slug'
     | '/polymorph/work/'
@@ -212,14 +248,17 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ConnectRoute: typeof ConnectRoute
   ResearchRoute: typeof ResearchRoute
-  SkillsRoute: typeof SkillsRoute
+  NewsSlugRoute: typeof NewsSlugRoute
   PathSlugRoute: typeof PathSlugRoute
   PolymorphAboutRoute: typeof PolymorphAboutRoute
   PolymorphContactRoute: typeof PolymorphContactRoute
   PolymorphProcessRoute: typeof PolymorphProcessRoute
+  SkillsSlugRoute: typeof SkillsSlugRoute
   WorkSlugRoute: typeof WorkSlugRoute
+  NewsIndexRoute: typeof NewsIndexRoute
   PathIndexRoute: typeof PathIndexRoute
   PolymorphIndexRoute: typeof PolymorphIndexRoute
+  SkillsIndexRoute: typeof SkillsIndexRoute
   WorkIndexRoute: typeof WorkIndexRoute
   PolymorphWorkSlugRoute: typeof PolymorphWorkSlugRoute
   PolymorphWorkIndexRoute: typeof PolymorphWorkIndexRoute
@@ -255,11 +294,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/skills': {
-      id: '/skills'
-      path: '/skills'
-      fullPath: '/skills'
-      preLoaderRoute: typeof SkillsRouteImport
+    '/news/': {
+      id: '/news/'
+      path: '/news'
+      fullPath: '/news/'
+      preLoaderRoute: typeof NewsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news/$slug': {
+      id: '/news/$slug'
+      path: '/news/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/path/': {
@@ -304,6 +350,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PolymorphProcessRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/skills/': {
+      id: '/skills/'
+      path: '/skills'
+      fullPath: '/skills/'
+      preLoaderRoute: typeof SkillsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skills/$slug': {
+      id: '/skills/$slug'
+      path: '/skills/$slug'
+      fullPath: '/skills/$slug'
+      preLoaderRoute: typeof SkillsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work/': {
       id: '/work/'
       path: '/work'
@@ -340,14 +400,17 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ConnectRoute: ConnectRoute,
   ResearchRoute: ResearchRoute,
-  SkillsRoute: SkillsRoute,
+  NewsSlugRoute: NewsSlugRoute,
   PathSlugRoute: PathSlugRoute,
   PolymorphAboutRoute: PolymorphAboutRoute,
   PolymorphContactRoute: PolymorphContactRoute,
   PolymorphProcessRoute: PolymorphProcessRoute,
+  SkillsSlugRoute: SkillsSlugRoute,
   WorkSlugRoute: WorkSlugRoute,
+  NewsIndexRoute: NewsIndexRoute,
   PathIndexRoute: PathIndexRoute,
   PolymorphIndexRoute: PolymorphIndexRoute,
+  SkillsIndexRoute: SkillsIndexRoute,
   WorkIndexRoute: WorkIndexRoute,
   PolymorphWorkSlugRoute: PolymorphWorkSlugRoute,
   PolymorphWorkIndexRoute: PolymorphWorkIndexRoute,

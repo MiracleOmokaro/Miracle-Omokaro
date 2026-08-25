@@ -9,7 +9,7 @@ const LABEL: Record<IdeaStatus, string> = {
 };
 
 const DOT: Record<IdeaStatus, string> = {
-  green: "bg-accent",
+  green: "bg-green ping-live",
   amber: "bg-amber",
   gray: "bg-subtle",
   blue: "bg-blue",
@@ -17,11 +17,8 @@ const DOT: Record<IdeaStatus, string> = {
 
 export function StatusPing({ status }: { status: IdeaStatus }) {
   return (
-    <span className="inline-flex items-center gap-2 text-xs font-medium text-muted">
-      <span
-        className={cn("size-2.5 rounded-full", DOT[status])}
-        aria-hidden
-      />
+    <span className="inline-flex items-center gap-2 text-xs text-muted">
+      <span className={cn("size-2 rounded-full", DOT[status])} aria-hidden />
       {LABEL[status]}
     </span>
   );

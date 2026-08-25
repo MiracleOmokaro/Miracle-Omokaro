@@ -7,13 +7,14 @@ export const WINS: Win[] = [
     severity: "critical",
     date: "2026-06-18",
     context: "PortSwigger Web Security Academy · authorized lab",
+    newsArt: "ember",
     summary:
       "A notes field stored unsanitized HTML and executed in another user’s session. Write-up names source, sink, and a fix that would survive a real code review.",
     techniques: ["Stored XSS", "Session impact", "Output encoding"],
     writeup: [
       {
         heading: "What I actually found",
-        body: "The application reflected a note’s body into a dashboard without context-aware encoding. A payload that closed the existing tag and opened a script ran in the victim’s browser when they opened the shared note. This is a lab, not a production bounty — the value is the method.",
+        body: "The application reflected a note’s body into a dashboard without context-aware encoding. A payload that closed the existing tag and opened a script ran in the victim’s browser when they opened the shared note. This is a lab, not a production bounty — the value is the method. When authorized programs begin, write-ups on this page will follow the same shape: source, sink, impact, fix. No payout figures. No unnamed “fortune 500” theatre.",
       },
       {
         heading: "Method",
@@ -26,7 +27,7 @@ export const WINS: Win[] = [
       },
       {
         heading: "What I would tell a developer",
-        body: "Encode on output for the context you are rendering into. Treat Markdown or “rich text” as a parser problem with an allow-list, not a sanitize-later problem. Add a CSP that would have made this payload noisy even if encoding failed.",
+        body: "Encode on output for the context you are rendering into. Treat Markdown or “rich text” as a parser problem with an allow-list, not a sanitize-later problem. Add a CSP that would have made this payload noisy even if encoding failed. Polymorph’s generator now treats unencoded HTML sinks as a ship-blocker.",
       },
     ],
   },
@@ -36,6 +37,7 @@ export const WINS: Win[] = [
     severity: "high",
     date: "2026-07-02",
     context: "PortSwigger Web Security Academy · authorized lab",
+    newsArt: "sand",
     summary:
       "Invoice identifiers were sequential and authorization was missing on GET. Another user’s invoice returned in full. The interesting part is how often this pattern survives in SME software.",
     techniques: ["IDOR", "Access control", "Object mapping"],
@@ -46,7 +48,7 @@ export const WINS: Win[] = [
       },
       {
         heading: "How upcoming practitioners should hunt it",
-        body: "Do not start with scanners. Start with a second account. For every id you see — numeric, UUID, filename — ask: what happens if I swap it? Test GET, POST, PUT, DELETE, and the export/print endpoints people forget.",
+        body: "Do not start with scanners. Start with a second account. For every id you see — numeric, UUID, filename — ask: what happens if I swap it? Test GET, POST, PUT, DELETE, and the export/print endpoints people forget. The 15-year-old who publishes five critical CVEs did not get there by running a default scan. They got there by being systematic on objects.",
       },
       {
         heading: "Fix",
@@ -60,6 +62,7 @@ export const WINS: Win[] = [
     severity: "medium",
     date: "2026-05-22",
     context: "Web Security Academy · authorized lab",
+    newsArt: "tide",
     summary:
       "The API reflected an attacker origin in Access-Control-Allow-Origin and allowed credentials. A simple cross-origin read would have exposed authenticated JSON.",
     techniques: ["CORS", "Trusted origin reflection"],
@@ -80,17 +83,22 @@ export const WINS: Win[] = [
     severity: "low",
     date: "2026-04-09",
     context: "Self-hosted lab application",
+    newsArt: "noir",
     summary:
       "A leftover debug endpoint returned stack traces and framework versions. Low severity alone; high value as a foothold for everything else.",
     techniques: ["Information disclosure", "Attack surface reduction"],
     writeup: [
       {
         heading: "The lesson I actually wanted",
-        body: "Low findings teach hygiene. Stack traces, version banners, and debug routes are how a later high-severity bug becomes easy. Polymorph’s generator now treats debug routes as a ship-blocker, not a later ticket.",
+        body: "Low findings teach hygiene. Stack traces, version banners, and debug routes are how a later high-severity bug becomes easy. Polymorph’s generator now treats debug routes as a ship-blocker, not a later ticket. When production bounty write-ups begin, the low findings will still be written this carefully. Pedagogy is the product.",
       },
     ],
   },
 ];
+
+export function getWin(id: string) {
+  return WINS.find((w) => w.id === id);
+}
 
 export function winsBySeverity(sev: string | "all") {
   if (sev === "all") return WINS;

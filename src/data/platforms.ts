@@ -1,0 +1,54 @@
+import type { PlatformKey } from "./types";
+
+export type PlatformMeta = {
+  key: PlatformKey;
+  name: string;
+  short: string;
+  mark: string;
+  accent: string;
+};
+
+export const PLATFORMS: Record<PlatformKey, PlatformMeta> = {
+  cisco: {
+    key: "cisco",
+    name: "Cisco Networking Academy",
+    short: "Cisco",
+    mark: "cisco",
+    accent: "#049fd9",
+  },
+  tryhackme: {
+    key: "tryhackme",
+    name: "TryHackMe",
+    short: "TryHackMe",
+    mark: "thm",
+    accent: "#88cc14",
+  },
+  portswigger: {
+    key: "portswigger",
+    name: "PortSwigger Web Security Academy",
+    short: "PortSwigger",
+    mark: "ps",
+    accent: "#e85d04",
+  },
+  asu: {
+    key: "asu",
+    name: "Arizona State University",
+    short: "ASU",
+    mark: "asu",
+    accent: "#8c1d40",
+  },
+  sans: {
+    key: "sans",
+    name: "SANS Institute",
+    short: "SANS",
+    mark: "sans",
+    accent: "#00205b",
+  },
+  independent: {
+    key: "independent",
+    name: "Independent research",
+    short: "Independent",
+    mark: "ind",
+    accent: "#a51c30",
+  },
+};
